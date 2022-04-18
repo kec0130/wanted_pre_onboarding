@@ -1,0 +1,92 @@
+a,
+article,
+aside,
+audio,
+blockquote,
+body,
+button,
+canvas,
+code,
+div,
+em,
+embed,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+html,
+i,
+iframe,
+img,
+input,
+label,
+li,
+main,
+nav,
+ol,
+output,
+p,
+pre,
+section,
+small,
+span,
+strong,
+table,
+tbody,
+td,
+textarea,
+time,
+ul,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  background: 0;
+  outline: 0;
+  color: inherit;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+a {
+  text-decoration: none;
+}
+
+li,
+ol,
+ul {
+  list-style: none;
+}
+
+strong,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
