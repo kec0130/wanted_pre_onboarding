@@ -17,6 +17,7 @@
 
 .toggle__option--active {
   color: black;
+  transition: 0.2s;
 }
 
 .toggle__highlight {

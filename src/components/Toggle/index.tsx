@@ -1,7 +1,12 @@
 import { useState } from "react";
 import "./index.css";
 
-export default function Toggle() {
+interface ToggleProps {
+  defaultOption: string;
+  anotherOption: string;
+}
+
+export default function Toggle({ defaultOption, anotherOption }: ToggleProps) {
   const [defaultActivation, setDefaultActivation] = useState(true);
 
   const moveHighlight = () => {
@@ -41,14 +46,14 @@ export default function Toggle() {
             defaultActivation ? "toggle__option--active" : ""
           }`}
         >
-          기본
+          {defaultOption}
         </div>
         <div
           className={`toggle__option ${
             !defaultActivation ? "toggle__option--active" : ""
           }`}
         >
-          상세
+          {anotherOption}
         </div>
         <span className="toggle__highlight" />
       </button>
