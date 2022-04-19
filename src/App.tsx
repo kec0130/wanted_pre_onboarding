@@ -1,7 +1,10 @@
+import Toggle from "./components/Toggle";
 import "./App.css";
 
-function App() {
-  return <div className="App">Hello World</div>;
+export default function App() {
+  return (
+    <div className="container">
+      <Toggle />
+    </div>
+  );
 }
-
-export default App;

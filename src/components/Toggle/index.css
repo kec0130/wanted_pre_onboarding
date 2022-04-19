@@ -1,0 +1,30 @@
+.toggle__slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 320px;
+  height: var(--toggle-height);
+  border-radius: var(--toggle-height);
+  background-color: lightgray;
+}
+
+.toggle__option {
+  width: 50%;
+  font-weight: 700;
+  color: gray;
+  z-index: 1;
+}
+
+.toggle__option--active {
+  color: black;
+}
+
+.toggle__highlight {
+  position: absolute;
+  width: 50%;
+  height: calc(var(--toggle-height) - 4px);
+  top: 2px;
+  left: 2px;
+  border-radius: 1rem;
+  background-color: white;
+}
