@@ -8,8 +8,9 @@
 .input {
   width: 250px;
   border: var(--border);
-  border-radius: 4px;
-  padding: 10px;
+  border-radius: var(--border-radius);
+  padding: var(--input-padding);
+  color: var(--font-color-main);
 }
 
 .input-wrap + .input-wrap {

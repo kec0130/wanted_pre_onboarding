@@ -46,7 +46,9 @@ export default function Dropdown({ list }: DropdownProps) {
             onChange={(event) => {
               const { value } = event.target;
               setSearchValue(value);
-              setFilteredList(list.filter((x) => x.includes(value)));
+              setFilteredList(
+                list.filter((x) => x.toLowerCase().includes(value))
+              );
             }}
             value={searchValue}
           />
