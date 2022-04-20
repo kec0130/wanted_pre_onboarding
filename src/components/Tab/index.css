@@ -2,16 +2,22 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  border-bottom: 1px solid var(--gray-3);
+  border-bottom: var(--border);
 }
 
 .tab {
-  color: var(--gray-7);
-  font-weight: 700;
+  color: var(--font-color-light);
+  font-weight: var(--font-weight-bold);
   padding: 1rem 0;
 }
 
 .tab--active {
-  color: var(--primary-color);
-  box-shadow: inset 0px -4px 0px var(--primary-color);
+  color: var(--highlight-color);
+  box-shadow: inset 0px -4px 0px var(--highlight-color);
+  transition: 0.3s ease-in-out;
+}
+
+.tab:not(.tab--active):hover {
+  color: var(--font-color-main);
+  transition: 0.2s ease-in-out;
 }

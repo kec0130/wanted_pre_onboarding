@@ -10,13 +10,13 @@
 
 .toggle__option {
   width: 50%;
-  font-weight: 700;
-  color: var(--gray-6);
+  font-weight: var(--font-weight-bold);
+  color: var(--font-color-light);
   z-index: 1;
 }
 
 .toggle__option--active {
-  color: var(--gray-7);
+  color: var(--font-color-main);
   transition: 0.2s;
 }
 
@@ -28,5 +28,5 @@
   left: 2px;
   border-radius: 1rem;
   background-color: #fff;
-  box-shadow: var(--box-shadow-1);
+  box-shadow: var(--box-shadow);
 }
