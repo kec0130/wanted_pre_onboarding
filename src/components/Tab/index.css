@@ -1,0 +1,17 @@
+.tabs {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 1px solid var(--gray-3);
+}
+
+.tab {
+  color: var(--gray-7);
+  font-weight: 700;
+  padding: 1rem 0;
+}
+
+.tab--active {
+  color: var(--primary-color);
+  box-shadow: inset 0px -4px 0px var(--primary-color);
+}

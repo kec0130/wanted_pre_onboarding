@@ -6,7 +6,7 @@ export default function App() {
   return (
     <main className="main-container">
       <Toggle defaultOption="Overview" anotherOption="Details" />
-      <Tab />
+      <Tab tabs={["Windows", "Mac", "Linux"]} />
     </main>
   );
 }
