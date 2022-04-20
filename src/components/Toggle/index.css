@@ -5,18 +5,18 @@
   width: 320px;
   height: var(--toggle-height);
   border-radius: var(--toggle-height);
-  background-color: lightgray;
+  background-color: var(--gray-3);
 }
 
 .toggle__option {
   width: 50%;
   font-weight: 700;
-  color: gray;
+  color: var(--gray-6);
   z-index: 1;
 }
 
 .toggle__option--active {
-  color: black;
+  color: var(--gray-7);
   transition: 0.2s;
 }
 
@@ -27,5 +27,6 @@
   top: 2px;
   left: 2px;
   border-radius: 1rem;
-  background-color: white;
+  background-color: #fff;
+  box-shadow: var(--box-shadow-1);
 }

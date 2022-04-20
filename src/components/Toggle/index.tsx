@@ -19,7 +19,7 @@ export default function Toggle({ defaultOption, anotherOption }: ToggleProps) {
       [
         {
           transform: `translateX(${
-            defaultActivation ? parent.offsetWidth / 2 - 4 : parent.offsetLeft
+            defaultActivation ? parent.offsetWidth / 2 - 4 : 0
           }px)`,
         },
       ],
@@ -32,31 +32,33 @@ export default function Toggle({ defaultOption, anotherOption }: ToggleProps) {
   };
 
   return (
-    <div className="toggle-container">
-      <button
-        type="button"
-        className="toggle__slider"
-        onClick={() => {
-          setDefaultActivation((current) => !current);
-          moveHighlight();
-        }}
-      >
-        <div
-          className={`toggle__option ${
-            defaultActivation ? "toggle__option--active" : ""
-          }`}
+    <article className="container">
+      <div className="toggle-wrap">
+        <button
+          type="button"
+          className="toggle__slider"
+          onClick={() => {
+            setDefaultActivation((current) => !current);
+            moveHighlight();
+          }}
         >
-          {defaultOption}
-        </div>
-        <div
-          className={`toggle__option ${
-            !defaultActivation ? "toggle__option--active" : ""
-          }`}
-        >
-          {anotherOption}
-        </div>
-        <span className="toggle__highlight" />
-      </button>
-    </div>
+          <div
+            className={`toggle__option ${
+              defaultActivation ? "toggle__option--active" : ""
+            }`}
+          >
+            {defaultOption}
+          </div>
+          <div
+            className={`toggle__option ${
+              !defaultActivation ? "toggle__option--active" : ""
+            }`}
+          >
+            {anotherOption}
+          </div>
+          <span className="toggle__highlight" />
+        </button>
+      </div>
+    </article>
   );
 }
