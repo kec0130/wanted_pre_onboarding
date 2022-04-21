@@ -1,3 +1,20 @@
+.input-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: var(--input-padding);
+  color: var(--font-color-main);
+  background: var(--bg-gray-light);
+}
+
+.input-wrap:focus-within {
+  border-color: var(--font-color-main);
+  transition: 0.3s ease-in-out;
+}
+
 .input__label {
   display: block;
   font-size: 0.8rem;
@@ -6,13 +23,23 @@
 }
 
 .input {
-  width: 250px;
-  border: var(--border);
-  border-radius: var(--border-radius);
-  padding: var(--input-padding);
-  color: var(--font-color-main);
+  width: 90%;
+  background: var(--bg-gray-light);
 }
 
-.input-wrap + .input-wrap {
+.input-wrap .icon {
+  display: flex;
+  align-items: center;
+}
+
+.email-icon {
+  color: var(--bg-gray-main);
+}
+
+.email-icon--valid {
+  color: var(--highlight-color);
+}
+
+.single-input + .single-input {
   margin-top: 1rem;
 }

@@ -1,40 +1,66 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from "react";
+import { ImEye, ImEyeBlocked } from "react-icons/im";
+import { BsFillCheckCircleFill } from "react-icons/bs";
 import "./index.css";
 
 export default function Input() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordShown, setPasswordShown] = useState(false);
+  const [emailValid, setEmailValid] = useState(false);
 
   return (
     <article className="container">
       <form>
-        <div className="input-wrap">
+        <div className="single-input">
           <label className="input__label" htmlFor="email">
             E-mail
           </label>
-          <input
-            className="input"
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            autoComplete="off"
-          />
+          <div className="input-wrap">
+            <input
+              className="input"
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(event) => {
+                const { value } = event.target;
+                setEmail(value);
+                setEmailValid(value.length > 8 && true);
+              }}
+              autoComplete="off"
+            />
+            <span
+              className={`icon email-icon ${
+                emailValid ? "email-icon--valid" : ""
+              }`}
+            >
+              <BsFillCheckCircleFill />
+            </span>
+          </div>
         </div>
-        <div className="input-wrap">
+        <div className="single-input">
           <label className="input__label" htmlFor="password">
             Password
           </label>
-          <input
-            className="input"
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="input-wrap">
+            <input
+              className="input"
+              type={passwordShown ? "text" : "password"}
+              id="password"
+              name="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            <button
+              type="button"
+              className="icon password-icon"
+              onClick={() => setPasswordShown((current) => !current)}
+            >
+              {passwordShown ? <ImEye /> : <ImEyeBlocked />}
+            </button>
+          </div>
         </div>
       </form>
     </article>
