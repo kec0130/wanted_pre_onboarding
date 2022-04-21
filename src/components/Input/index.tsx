@@ -40,6 +40,7 @@ export default function Input() {
               className={`icon email-icon ${
                 emailValid ? "email-icon--valid" : ""
               }`}
+              aria-label="email validation"
             >
               <BsFillCheckCircleFill />
             </span>
@@ -62,6 +63,7 @@ export default function Input() {
               type="button"
               className="icon password-icon"
               onClick={() => setPasswordShown((current) => !current)}
+              aria-label="toggle password"
             >
               {passwordShown ? <ImEye /> : <ImEyeBlocked />}
             </button>
