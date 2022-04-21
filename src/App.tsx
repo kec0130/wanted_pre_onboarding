@@ -1,5 +1,6 @@
 import Toggle from "./components/Toggle";
 import Tab from "./components/Tab";
+import Slider from "./components/Slider";
 import Input from "./components/Input";
 import Dropdown from "./components/Dropdown";
 import listOfCountries from "./data/countries";
@@ -10,6 +11,7 @@ export default function App() {
     <main className="main-container">
       <Toggle defaultOption="Overview" anotherOption="Details" />
       <Tab tabs={["Windows", "Mac", "Linux"]} />
+      <Slider />
       <Input />
       <Dropdown list={listOfCountries} />
     </main>

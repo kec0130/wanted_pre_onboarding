@@ -1,0 +1,35 @@
+.slider-wrap {
+  width: 250px;
+}
+
+.slider__value {
+  display: block;
+  color: var(--font-color-main);
+  text-align: center;
+  padding: 1rem;
+}
+
+.value {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  margin-right: 4px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 6px;
+  background: var(--gray-3);
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--highlight-color);
+  cursor: pointer;
+}
