@@ -10,6 +10,11 @@ export default function Input() {
   const [passwordShown, setPasswordShown] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
 
+  const validateEmail = (emailString: string) => {
+    const emailFormat = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    setEmailValid(emailFormat.test(emailString));
+  };
+
   return (
     <article className="container">
       <form>
@@ -27,7 +32,7 @@ export default function Input() {
               onChange={(event) => {
                 const { value } = event.target;
                 setEmail(value);
-                setEmailValid(value.length > 8 && true);
+                validateEmail(value);
               }}
               autoComplete="off"
             />
