@@ -12,9 +12,9 @@
   --highlight-color: #1098ad;
   --warning-color: #c92a2a;
   --bg-gray-main: var(--gray-3);
-  --bg-gray-light: var(--gray-0);
   --font-color-main: var(--gray-7);
   --font-color-light: var(--gray-6);
+  --font-size-small: 0.8rem;
   --font-weight-bold: 700;
   --border: 1px solid var(--gray-4);
   --border-radius: 4px;

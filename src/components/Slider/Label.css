@@ -1,0 +1,19 @@
+.label-wrap {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.label {
+  width: 2.8rem;
+  padding: 4px;
+  border-radius: 1rem;
+  background: var(--bg-gray-main);
+  font-size: var(--font-size-small);
+  color: var(--font-color-main);
+  transition: 0.3s ease-in-out;
+}
+
+.label:hover {
+  background: var(--gray-2);
+}
