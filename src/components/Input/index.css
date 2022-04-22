@@ -7,12 +7,11 @@
   border-radius: var(--border-radius);
   padding: var(--input-padding);
   color: var(--font-color-main);
-  background: var(--bg-gray-light);
+  transition: 0.3s ease-in-out;
 }
 
 .input-wrap:focus-within {
   border-color: var(--font-color-main);
-  transition: 0.3s ease-in-out;
 }
 
 .input__label {
@@ -24,12 +23,22 @@
 
 .input {
   width: 90%;
-  background: var(--bg-gray-light);
 }
 
-.input-wrap .icon {
-  display: flex;
-  align-items: center;
+.input::placeholder {
+  color: var(--gray-4);
+}
+.input::-webkit-input-placeholder {
+  color: var(--gray-4);
+}
+.input:-moz-placeholder {
+  color: var(--gray-4);
+}
+.input::-moz-placeholder {
+  color: var(--gray-4);
+}
+.input:-ms-input-placeholder {
+  color: var(--gray-4);
 }
 
 .email-icon {
@@ -38,6 +47,12 @@
 
 .email-icon--valid {
   color: var(--highlight-color);
+}
+
+.password-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .single-input + .single-input {

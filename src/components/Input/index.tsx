@@ -25,6 +25,7 @@ export default function Input() {
           <div className="input-wrap">
             <input
               className="input"
+              placeholder="E-mail"
               type="email"
               id="email"
               name="email"
@@ -36,14 +37,12 @@ export default function Input() {
               }}
               autoComplete="off"
             />
-            <span
+            <BsFillCheckCircleFill
               className={`icon email-icon ${
                 emailValid ? "email-icon--valid" : ""
               }`}
               aria-label="email validation"
-            >
-              <BsFillCheckCircleFill />
-            </span>
+            />
           </div>
         </div>
         <div className="single-input">
@@ -53,6 +52,7 @@ export default function Input() {
           <div className="input-wrap">
             <input
               className="input"
+              placeholder="Password"
               type={passwordShown ? "text" : "password"}
               id="password"
               name="password"
