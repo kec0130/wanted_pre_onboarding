@@ -13,7 +13,7 @@ export default function App() {
       <Tab tabs={["Windows", "Mac", "Linux"]} />
       <Slider />
       <Input />
-      <Dropdown list={listOfCountries} />
+      <Dropdown category="Country" list={listOfCountries} />
     </main>
   );
 }

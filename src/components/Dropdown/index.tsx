@@ -4,12 +4,13 @@ import { IoSearch } from "react-icons/io5";
 import "./index.css";
 
 interface DropdownProps {
+  category: string;
   list: Array<string>;
 }
 
-export default function Dropdown({ list }: DropdownProps) {
+export default function Dropdown({ category, list }: DropdownProps) {
   const [opened, setOpened] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(list[0]);
+  const [selectedValue, setSelectedValue] = useState(`Select ${category}`);
   const [searchValue, setSearchValue] = useState("");
   const [filteredList, setFilteredList] = useState(list);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -48,46 +49,53 @@ export default function Dropdown({ list }: DropdownProps) {
             aria-label="arrow down"
           />
         </button>
-        <div className="dropdown__content">
-          <div className="search-wrap">
-            <IoSearch className="icon search-icon" aria-label="search" />
-            <input
-              type="text"
-              className="dropdown__search"
-              ref={inputRef}
-              onMouseDown={(event) => event.preventDefault()}
-              onClick={(event) => {
-                focusInput();
-                if (event.target !== inputRef.current) return;
-                setOpened(true);
-              }}
-              onChange={(event) => {
-                const { value } = event.target;
-                setSearchValue(value);
-                setFilteredList(
-                  list.filter((x) => x.toLowerCase().includes(value))
-                );
-              }}
-              value={searchValue}
-            />
+        {opened && (
+          <div className="dropdown__content">
+            <div className="search-wrap">
+              <IoSearch className="icon search-icon" aria-label="search" />
+              <input
+                type="text"
+                className="dropdown__search"
+                placeholder="Search"
+                ref={inputRef}
+                onMouseDown={(event) => event.preventDefault()}
+                onClick={(event) => {
+                  focusInput();
+                  if (event.target !== inputRef.current) return;
+                  setOpened(true);
+                }}
+                onChange={(event) => {
+                  const { value } = event.target;
+                  setSearchValue(value);
+                  setFilteredList(
+                    list.filter((x) => x.toLowerCase().includes(value))
+                  );
+                }}
+                value={searchValue}
+              />
+            </div>
+            <ul className="dropdown__list">
+              {filteredList.length ? (
+                filteredList.map((item) => (
+                  <li key={item}>
+                    <button
+                      type="button"
+                      onMouseDown={(event) => event.preventDefault()}
+                      onClick={() => {
+                        resetDropdown();
+                        setSelectedValue(item);
+                      }}
+                    >
+                      {item}
+                    </button>
+                  </li>
+                ))
+              ) : (
+                <span className="no-result">No result</span>
+              )}
+            </ul>
           </div>
-          <ul className="dropdown__list">
-            {filteredList.map((item) => (
-              <li key={item}>
-                <button
-                  type="button"
-                  onMouseDown={(event) => event.preventDefault()}
-                  onClick={() => {
-                    resetDropdown();
-                    setSelectedValue(item);
-                  }}
-                >
-                  {item}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        )}
       </div>
     </article>
   );
