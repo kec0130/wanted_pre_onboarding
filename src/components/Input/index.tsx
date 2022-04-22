@@ -7,12 +7,21 @@ import "./index.css";
 export default function Input() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordShown, setPasswordShown] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
+  const [showEmailError, setShowEmailError] = useState(false);
 
   const validateEmail = (emailString: string) => {
     const emailFormat = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
     setEmailValid(emailFormat.test(emailString));
+  };
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+
+    setEmail(value);
+    validateEmail(value);
+    setShowEmailError(!value && false);
   };
 
   return (
@@ -30,11 +39,8 @@ export default function Input() {
               id="email"
               name="email"
               value={email}
-              onChange={(event) => {
-                const { value } = event.target;
-                setEmail(value);
-                validateEmail(value);
-              }}
+              onChange={(event) => handleEmailChange(event)}
+              onBlur={() => email && setShowEmailError(!emailValid)}
               autoComplete="off"
             />
             <BsFillCheckCircleFill
@@ -44,6 +50,9 @@ export default function Input() {
               aria-label="email validation"
             />
           </div>
+          {showEmailError && (
+            <span className="email-error">Invalid e-mail address.</span>
+          )}
         </div>
         <div className="single-input">
           <label className="input__label" htmlFor="password">
@@ -53,7 +62,7 @@ export default function Input() {
             <input
               className="input"
               placeholder="Password"
-              type={passwordShown ? "text" : "password"}
+              type={showPassword ? "text" : "password"}
               id="password"
               name="password"
               value={password}
@@ -62,10 +71,10 @@ export default function Input() {
             <button
               type="button"
               className="icon password-icon"
-              onClick={() => setPasswordShown((current) => !current)}
+              onClick={() => setShowPassword((current) => !current)}
               aria-label="toggle password"
             >
-              {passwordShown ? <ImEye /> : <ImEyeBlocked />}
+              {showPassword ? <ImEye /> : <ImEyeBlocked />}
             </button>
           </div>
         </div>
