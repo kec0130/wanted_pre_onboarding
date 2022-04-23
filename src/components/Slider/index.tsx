@@ -2,7 +2,11 @@ import { useState } from "react";
 import Label from "./Label";
 import "./index.css";
 
-export default function Slider() {
+interface SliderProps {
+  labelStep: number;
+}
+
+export default function Slider({ labelStep }: SliderProps) {
   const [inputValue, setInputValue] = useState(0);
 
   const handleProgress = (value: number) => {
@@ -46,7 +50,7 @@ export default function Slider() {
             />
           </div>
           <Label
-            step={25}
+            labelStep={labelStep}
             inputValue={inputValue}
             setInputValue={setInputValue}
             handleProgress={handleProgress}

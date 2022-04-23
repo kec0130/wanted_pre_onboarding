@@ -11,7 +11,7 @@ export default function App() {
     <main className="main-container">
       <Toggle defaultOption="Overview" anotherOption="Details" />
       <Tab tabs={["Windows", "Mac", "Linux"]} />
-      <Slider />
+      <Slider labelStep={25} />
       <Input />
       <Dropdown category="Country" list={listOfCountries} />
     </main>

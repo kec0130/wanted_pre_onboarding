@@ -1,7 +1,7 @@
 import "./Label.css";
 
 interface LabelProps {
-  step: number;
+  labelStep: number;
   inputValue: number;
   setInputValue: React.Dispatch<React.SetStateAction<number>>;
   // eslint-disable-next-line no-unused-vars
@@ -9,15 +9,15 @@ interface LabelProps {
 }
 
 export default function Label({
-  step,
+  labelStep,
   inputValue,
   setInputValue,
   handleProgress,
 }: LabelProps) {
-  const labelCount = 100 / step + 1;
+  const labelCount = 100 / labelStep + 1;
   const labelList = Array(labelCount)
     .fill(0)
-    .map((_, i) => i * step);
+    .map((_, i) => i * labelStep);
 
   return (
     <div className="label-wrap">
