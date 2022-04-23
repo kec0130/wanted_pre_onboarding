@@ -12,12 +12,12 @@
   width: 50%;
   font-weight: var(--font-weight-bold);
   color: var(--font-color-light);
+  transition: 0.2s ease-in-out;
   z-index: 1;
 }
 
 .toggle__option--active {
   color: var(--font-color-main);
-  transition: 0.2s;
 }
 
 .toggle__highlight {

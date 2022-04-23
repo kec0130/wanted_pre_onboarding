@@ -17,6 +17,7 @@
   --font-size-small: 0.8rem;
   --font-weight-bold: 700;
   --border: 1px solid var(--gray-4);
+  --border-thick: 2px solid var(--gray-4);
   --border-radius: 4px;
   --toggle-height: 32px;
   --input-padding: 10px;

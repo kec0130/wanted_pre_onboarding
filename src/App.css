@@ -3,13 +3,18 @@
   flex-direction: column;
   max-width: 600px;
   min-height: 100vh;
-  margin: 20px auto;
-  padding-bottom: 300px;
+  margin: 20px auto 260px;
 }
 
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  margin: 60px 0;
+}
+
+.title {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
 }

@@ -18,7 +18,7 @@
 .input__label,
 .email-error {
   display: block;
-  font-size: 0.8rem;
+  font-size: var(--font-size-small);
   color: var(--font-color-light);
   padding: 4px 6px;
 }
