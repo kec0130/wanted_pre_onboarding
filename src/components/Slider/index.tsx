@@ -8,6 +8,7 @@ export default function Slider() {
   const handleProgress = (value: number) => {
     const slider = document.querySelector<HTMLInputElement>(".slider__input");
     if (!slider) return;
+
     slider.style.background = `
       linear-gradient(
         to right,
@@ -19,8 +20,15 @@ export default function Slider() {
     `;
   };
 
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setInputValue(Number(value));
+    handleProgress(Number(value));
+  };
+
   return (
     <article className="container">
+      <h3 className="title">Slider</h3>
       <div className="slider-wrap">
         <div className="slider__value">
           <span className="value">{inputValue}</span>
@@ -34,11 +42,7 @@ export default function Slider() {
               max="100"
               className="slider__input"
               value={inputValue}
-              onChange={(event) => {
-                const { value } = event.target;
-                setInputValue(Number(value));
-                handleProgress(Number(value));
-              }}
+              onChange={handleInputChange}
             />
           </div>
           <Label

@@ -24,6 +24,7 @@ export default function Label({
       <div className="label-circle-wrap">
         {labelList.map((label) => (
           <span
+            key={label}
             className={`label-circle ${
               label <= inputValue ? "label-circle--active" : ""
             }`}

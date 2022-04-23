@@ -20,14 +20,24 @@ export default function Dropdown({ category, list }: DropdownProps) {
     setSearchValue("");
   };
 
-  const focusInput = () => {
+  const handleInputClick = (
+    event: React.MouseEvent<HTMLInputElement, MouseEvent>
+  ) => {
     const input = document.querySelector<HTMLInputElement>(".dropdown__search");
-    if (!input) return;
+    if (!input || event.target !== inputRef.current) return;
     input.focus();
+    setOpened(true);
+  };
+
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setSearchValue(value);
+    setFilteredList(list.filter((x) => x.toLowerCase().includes(value)));
   };
 
   return (
     <article className="container">
+      <h3 className="title">Dropdown</h3>
       <div
         className={`dropdown ${opened ? "dropdown--open" : ""}`}
         onBlur={() => {
@@ -38,10 +48,7 @@ export default function Dropdown({ category, list }: DropdownProps) {
         <button
           type="button"
           className="dropdown__select"
-          onClick={() => {
-            setOpened((current) => !current);
-            focusInput();
-          }}
+          onClick={() => setOpened((current) => !current)}
         >
           {selectedValue}
           <IoMdArrowDropdown
@@ -59,18 +66,8 @@ export default function Dropdown({ category, list }: DropdownProps) {
                 placeholder="Search"
                 ref={inputRef}
                 onMouseDown={(event) => event.preventDefault()}
-                onClick={(event) => {
-                  focusInput();
-                  if (event.target !== inputRef.current) return;
-                  setOpened(true);
-                }}
-                onChange={(event) => {
-                  const { value } = event.target;
-                  setSearchValue(value);
-                  setFilteredList(
-                    list.filter((x) => x.toLowerCase().includes(value))
-                  );
-                }}
+                onClick={handleInputClick}
+                onChange={handleSearch}
                 value={searchValue}
               />
             </div>

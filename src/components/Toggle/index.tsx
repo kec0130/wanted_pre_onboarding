@@ -33,6 +33,7 @@ export default function Toggle({ defaultOption, anotherOption }: ToggleProps) {
 
   return (
     <article className="container">
+      <h3 className="title">Toggle</h3>
       <div className="toggle-wrap">
         <button
           type="button"

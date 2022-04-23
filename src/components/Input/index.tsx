@@ -18,7 +18,6 @@ export default function Input() {
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-
     setEmail(value);
     validateEmail(value);
     setShowEmailError(!value && false);
@@ -26,6 +25,7 @@ export default function Input() {
 
   return (
     <article className="container">
+      <h3 className="title">Input</h3>
       <form>
         <div className="single-input">
           <label className="input__label" htmlFor="email">
@@ -39,7 +39,7 @@ export default function Input() {
               id="email"
               name="email"
               value={email}
-              onChange={(event) => handleEmailChange(event)}
+              onChange={handleEmailChange}
               onBlur={() => email && setShowEmailError(!emailValid)}
               autoComplete="off"
             />
