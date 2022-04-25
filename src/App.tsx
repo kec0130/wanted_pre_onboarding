@@ -8,12 +8,14 @@ import "./App.css";
 
 export default function App() {
   return (
-    <main className="main-container">
-      <Toggle defaultOption="Overview" anotherOption="Details" />
-      <Tab tabs={["Windows", "Mac", "Linux"]} />
-      <Slider labelStep={25} />
-      <Input />
-      <Dropdown category="Country" list={listOfCountries} />
-    </main>
+    <div className="background">
+      <main className="main-container">
+        <Toggle defaultOption="Overview" anotherOption="Details" />
+        <Tab tabs={["Windows", "Mac", "Linux"]} />
+        <Slider labelStep={25} />
+        <Input />
+        <Dropdown category="Country" list={listOfCountries} />
+      </main>
+    </div>
   );
 }
