@@ -1,7 +1,5 @@
-.tabs {
+.tab-wrap {
   position: relative;
-  display: flex;
-  justify-content: center;
   min-width: 340px;
   width: 90%;
   border-bottom: var(--border-thick);
@@ -11,16 +9,15 @@
   color: var(--font-color-light);
   font-weight: var(--font-weight-bold);
   padding: 1rem 0;
-  transition: 0.3s ease-in-out;
+  transition: color 0.2s ease-in-out;
 }
 
 .tab__highlight {
   position: absolute;
   left: 0;
-  bottom: -2px;
   height: 2px;
-  width: 10%;
   background: var(--highlight-color);
+  transition: transform 0.2s ease-in-out;
 }
 
 .tab--active {
