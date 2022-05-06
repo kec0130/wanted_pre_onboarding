@@ -4,12 +4,12 @@ import Slider from '../components/Slider'
 import Input from '../components/Input'
 import Dropdown from '../components/Dropdown'
 import listOfCountries from '../data/countries'
-import './App.css'
+import styles from './Routes.module.scss'
 
 export default function App() {
   return (
-    <div className='background'>
-      <main className='main-container'>
+    <div className={styles.background}>
+      <main className={styles.mainContainer}>
         <Toggle defaultOption='Overview' anotherOption='Details' />
         <Tab tabs={['Windows', 'Mac', 'Linux']} />
         <Slider labelStep={25} />

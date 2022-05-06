@@ -1,12 +1,16 @@
 // Grayscale
 $WHITE: #ffffff;
 $BLACK: #000000;
-$GRAY2: #222222;
-$GRAY3: #333333;
-$GRAY6: #666666;
-$GRAYA: #aaaaaa;
-$GRAYD: #dddddd;
-$GRAYE: #eeeeee;
+$GRAY0: #f8f9fa;
+$GRAY1: #f1f3f5;
+$GRAY2: #e9ecef;
+$GRAY3: #dee2e6;
+$GRAY4: #ced4da;
+$GRAY5: #adb5bd;
+$GRAY6: #868e96;
+$GRAY7: #495057;
+$GRAY8: #343a40;
+$GRAY9: #212529;
 
 // Chromatic
 $RED: #ff3b30;
@@ -18,3 +22,12 @@ $BLUE: #007aff;
 $INDIGO: #5856d6;
 $PURPLE: #af52de;
 $PINK: #ff2d55;
+
+$HIGHLIGHT: #1098ad;
+$WARNING: #c92a2a;
+
+$FONT_DARK: $GRAY7;
+$FONT_LIGHT: $GRAY6;
+
+$BACKGROUND: $GRAY3;
+$BORDER: $GRAY4;
