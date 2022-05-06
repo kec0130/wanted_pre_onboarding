@@ -1,17 +1,17 @@
-import { useState } from "react";
-import Label from "./Label";
-import "./index.css";
+import { useState } from 'react'
+import Label from './Label'
+import './index.css'
 
 interface SliderProps {
-  labelStep: number;
+  labelStep: number
 }
 
 export default function Slider({ labelStep }: SliderProps) {
-  const [inputValue, setInputValue] = useState(0);
+  const [inputValue, setInputValue] = useState(0)
 
   const handleProgress = (value: number) => {
-    const slider = document.querySelector<HTMLInputElement>(".slider__input");
-    if (!slider) return;
+    const slider = document.querySelector<HTMLInputElement>('.slider__input')
+    if (!slider) return
 
     slider.style.background = `
       linear-gradient(
@@ -21,30 +21,30 @@ export default function Slider({ labelStep }: SliderProps) {
         var(--bg-gray-main) ${value}%,
         var(--bg-gray-main) 100%
       )
-    `;
-  };
+    `
+  }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    setInputValue(Number(value));
-    handleProgress(Number(value));
-  };
+    const { value } = event.target
+    setInputValue(Number(value))
+    handleProgress(Number(value))
+  }
 
   return (
-    <article className="container">
-      <h3 className="title">Slider</h3>
-      <div className="slider-wrap">
-        <div className="slider__value">
-          <span className="value">{inputValue}</span>
+    <article className='container'>
+      <h3 className='title'>Slider</h3>
+      <div className='slider-wrap'>
+        <div className='slider__value'>
+          <span className='value'>{inputValue}</span>
           <span>%</span>
         </div>
         <div>
-          <div className="slider__input-wrap">
+          <div className='slider__input-wrap'>
             <input
-              type="range"
-              min="0"
-              max="100"
-              className="slider__input"
+              type='range'
+              min='0'
+              max='100'
+              className='slider__input'
               value={inputValue}
               onChange={handleInputChange}
             />
@@ -58,5 +58,5 @@ export default function Slider({ labelStep }: SliderProps) {
         </div>
       </div>
     </article>
-  );
+  )
 }
