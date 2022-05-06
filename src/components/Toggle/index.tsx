@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import './index.css'
+import classNames from 'classnames'
+import styles from './Toggle.module.scss'
 
 interface ToggleProps {
   defaultOption: string
@@ -32,18 +33,18 @@ export default function Toggle({ defaultOption, anotherOption }: ToggleProps) {
   return (
     <article className='container'>
       <h3 className='title'>Toggle</h3>
-      <div className='toggle-wrap'>
+      <div className={styles.toggleWrapper}>
         <button
           type='button'
-          className='toggle__slider'
+          className={styles.slider}
           onClick={() => {
             setDefaultActivation((current) => !current)
             moveHighlight()
           }}
         >
-          <div className={`toggle__option ${defaultActivation ? 'toggle__option--active' : ''}`}>{defaultOption}</div>
-          <div className={`toggle__option ${!defaultActivation ? 'toggle__option--active' : ''}`}>{anotherOption}</div>
-          <span className='toggle__highlight' />
+          <div className={classNames(styles.option, { [styles.active]: defaultActivation })}>{defaultOption}</div>
+          <div className={classNames(styles.option, { [styles.active]: !defaultActivation })}>{anotherOption}</div>
+          <span className={styles.indicator} />
         </button>
       </div>
     </article>

@@ -1,0 +1,39 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/constants/sizes';
+
+.labelCircles {
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-13px);
+
+  .labelCircle {
+    width: sizes.$SLIDER_CIRCLE;
+    height: sizes.$SLIDER_CIRCLE;
+    background: colors.$BACKGROUND;
+    border-radius: 50%;
+
+    &.active {
+      background: colors.$HIGHLIGHT;
+    }
+  }
+}
+
+.labelButtons {
+  display: flex;
+  justify-content: space-between;
+
+  .labelButton {
+    width: 2.8rem;
+    padding: 4px;
+    font-size: sizes.$FONT_SMALL;
+    color: colors.$FONT_DARK;
+    background: colors.$BACKGROUND;
+    border-radius: 1rem;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      color: colors.$WHITE;
+      background: colors.$HIGHLIGHT;
+    }
+  }
+}

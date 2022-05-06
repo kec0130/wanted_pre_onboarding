@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Label from './Label'
-import './index.css'
+import styles from './Slider.module.scss'
 
 interface SliderProps {
   labelStep: number
@@ -33,18 +33,18 @@ export default function Slider({ labelStep }: SliderProps) {
   return (
     <article className='container'>
       <h3 className='title'>Slider</h3>
-      <div className='slider-wrap'>
-        <div className='slider__value'>
-          <span className='value'>{inputValue}</span>
+      <div className={styles.sliderWrapper}>
+        <div className={styles.valueWrapper}>
+          <span className={styles.value}>{inputValue}</span>
           <span>%</span>
         </div>
         <div>
-          <div className='slider__input-wrap'>
+          <div className={styles.inputWrapper}>
             <input
               type='range'
               min='0'
               max='100'
-              className='slider__input'
+              className={styles.input}
               value={inputValue}
               onChange={handleInputChange}
             />

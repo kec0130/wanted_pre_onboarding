@@ -1,4 +1,5 @@
-import './Label.css'
+import classNames from 'classnames'
+import styles from './Label.module.scss'
 
 interface LabelProps {
   labelStep: number
@@ -15,18 +16,18 @@ export default function Label({ labelStep, inputValue, setInputValue, handleProg
     .map((_, i) => i * labelStep)
 
   return (
-    <div className='label-wrap'>
-      <div className='label-circle-wrap'>
+    <>
+      <div className={styles.labelCircles}>
         {labelList.map((label) => (
-          <span key={label} className={`label-circle ${label <= inputValue ? 'label-circle--active' : ''}`} />
+          <span key={label} className={classNames(styles.labelCircle, { [styles.active]: label <= inputValue })} />
         ))}
       </div>
-      <div className='label-button-wrap'>
+      <div className={styles.labelButtons}>
         {labelList.map((label) => (
           <button
             key={label}
             type='button'
-            className='label-button'
+            className={styles.labelButton}
             onClick={() => {
               setInputValue(label)
               handleProgress(label)
@@ -36,6 +37,6 @@ export default function Label({ labelStep, inputValue, setInputValue, handleProg
           </button>
         ))}
       </div>
-    </div>
+    </>
   )
 }

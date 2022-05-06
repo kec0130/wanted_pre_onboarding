@@ -1,0 +1,61 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/constants/sizes';
+@use '/src/styles/constants/levels';
+
+.sliderWrapper {
+  width: 320px;
+
+  .valueWrapper {
+    display: block;
+    padding: 1rem;
+    color: colors.$FONT_DARK;
+    text-align: center;
+
+    .value {
+      margin-right: 4px;
+      font-size: 1.5rem;
+    }
+  }
+
+  .inputWrapper {
+    position: relative;
+    z-index: levels.$SLIDER;
+
+    .input {
+      width: 100%;
+      height: 6px;
+      background: colors.$BACKGROUND;
+      border-radius: 6px;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .input::-webkit-slider-thumb {
+      width: sizes.$SLIDER_THUMB;
+      height: sizes.$SLIDER_THUMB;
+      cursor: pointer;
+      background-color: colors.$HIGHLIGHT;
+      border: 3px solid colors.$WHITE;
+      border-radius: 50%;
+      -webkit-appearance: none;
+      appearance: none;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 12%), 0 1px 2px rgba(0, 0, 0, 24%);
+    }
+
+    .input::-moz-range-thumb {
+      width: sizes.$SLIDER_THUMB;
+      height: sizes.$SLIDER_THUMB;
+      cursor: pointer;
+      background-color: colors.$HIGHLIGHT;
+      border-radius: 50%;
+    }
+
+    .input::-ms-thumb {
+      width: sizes.$SLIDER_THUMB;
+      height: sizes.$SLIDER_THUMB;
+      cursor: pointer;
+      background-color: colors.$HIGHLIGHT;
+      border-radius: 50%;
+    }
+  }
+}

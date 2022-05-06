@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { IoSearch } from 'react-icons/io5'
-import './index.css'
+import classNames from 'classnames'
+import styles from './Dropdown.module.scss'
 
 interface DropdownProps {
   category: string
@@ -37,23 +38,23 @@ export default function Dropdown({ category, list }: DropdownProps) {
     <article className='container'>
       <h3 className='title'>Dropdown</h3>
       <div
-        className={`dropdown ${opened ? 'dropdown--open' : ''}`}
+        className={classNames(styles.dropdown, { [styles.open]: opened })}
         onBlur={() => {
           resetDropdown()
           setFilteredList(list)
         }}
       >
-        <button type='button' className='dropdown__select' onClick={() => setOpened((current) => !current)}>
+        <button type='button' className={styles.selectBtn} onClick={() => setOpened((current) => !current)}>
           {selectedValue}
-          <IoMdArrowDropdown className='icon dropdown-icon' aria-label='arrow down' />
+          <IoMdArrowDropdown className={styles.arrowIcon} aria-label='arrow down' />
         </button>
         {opened && (
-          <div className='dropdown__content'>
-            <div className='search-wrap'>
-              <IoSearch className='icon search-icon' aria-label='search' />
+          <div className={styles.content}>
+            <div className={styles.searchWrapper}>
+              <IoSearch className={styles.searchIcon} aria-label='search' />
               <input
                 type='text'
-                className='dropdown__search'
+                className={styles.searchInput}
                 placeholder='Search'
                 ref={inputRef}
                 onMouseDown={(event) => event.preventDefault()}
@@ -62,7 +63,7 @@ export default function Dropdown({ category, list }: DropdownProps) {
                 value={searchValue}
               />
             </div>
-            <ul className='dropdown__list'>
+            <ul className={styles.dropdownList}>
               {filteredList.length ? (
                 filteredList.map((item) => (
                   <li key={item}>
@@ -79,7 +80,7 @@ export default function Dropdown({ category, list }: DropdownProps) {
                   </li>
                 ))
               ) : (
-                <span className='no-result'>No result</span>
+                <span className={styles.noResult}>No result</span>
               )}
             </ul>
           </div>

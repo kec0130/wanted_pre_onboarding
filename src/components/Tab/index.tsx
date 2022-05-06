@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
-import './index.css'
+import classNames from 'classnames'
+import styles from './Tab.module.scss'
 
 interface TabProps {
   tabs: Array<string>
@@ -12,13 +13,13 @@ export default function Tab({ tabs }: TabProps) {
   return (
     <article className='container'>
       <h3 className='title'>Tab</h3>
-      <div className='tab-wrap'>
-        <div className='tabs'>
+      <div className={styles.tabWrapper}>
+        <div>
           {tabs.map((tab, index) => (
             <button
               key={tab}
               type='button'
-              className={`tab ${currentIndex === index ? 'tab--active' : ''}`}
+              className={classNames(styles.tab, { [styles.active]: currentIndex === index })}
               onClick={() => setCurrentIndex(index)}
               style={{ width: `${tabWidth}%` }}
             >
@@ -27,7 +28,7 @@ export default function Tab({ tabs }: TabProps) {
           ))}
         </div>
         <span
-          className='tab__highlight'
+          className={styles.indicator}
           style={{
             width: `${tabWidth}%`,
             transform: `translateX(${currentIndex * 100}%)`,

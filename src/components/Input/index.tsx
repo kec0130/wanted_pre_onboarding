@@ -2,7 +2,8 @@
 import { useState } from 'react'
 import { ImEye, ImEyeBlocked } from 'react-icons/im'
 import { BsFillCheckCircleFill } from 'react-icons/bs'
-import './index.css'
+import classNames from 'classnames'
+import styles from './Input.module.scss'
 
 export default function Input() {
   const [email, setEmail] = useState('')
@@ -27,13 +28,13 @@ export default function Input() {
     <article className='container'>
       <h3 className='title'>Input</h3>
       <form>
-        <div className='single-input'>
-          <label className='input__label' htmlFor='email'>
+        <div className={styles.inputGroup}>
+          <label className={styles.label} htmlFor='email'>
             E-mail
           </label>
-          <div className='input-wrap'>
+          <div className={styles.inputWrapper}>
             <input
-              className='input'
+              className={styles.input}
               placeholder='E-mail'
               type='email'
               id='email'
@@ -44,19 +45,19 @@ export default function Input() {
               autoComplete='off'
             />
             <BsFillCheckCircleFill
-              className={`icon email-icon ${emailValid ? 'email-icon--valid' : ''}`}
+              className={classNames(styles.checkIcon, { [styles.valid]: emailValid })}
               aria-label='email validation'
             />
           </div>
-          {showEmailError && <span className='email-error'>Invalid e-mail address.</span>}
+          {showEmailError && <span className={styles.emailError}>Invalid e-mail address.</span>}
         </div>
-        <div className='single-input'>
-          <label className='input__label' htmlFor='password'>
+        <div className={styles.inputGroup}>
+          <label className={styles.label} htmlFor='password'>
             Password
           </label>
-          <div className='input-wrap'>
+          <div className={styles.inputWrapper}>
             <input
-              className='input'
+              className={styles.input}
               placeholder='Password'
               type={showPassword ? 'text' : 'password'}
               id='password'
@@ -66,7 +67,7 @@ export default function Input() {
             />
             <button
               type='button'
-              className='icon password-icon'
+              className={styles.eyeIcon}
               onClick={() => setShowPassword((current) => !current)}
               aria-label='toggle password'
             >

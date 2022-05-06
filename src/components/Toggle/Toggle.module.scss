@@ -1,0 +1,37 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/constants/sizes';
+@use '/src/styles/constants/levels';
+
+.slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 320px;
+  height: sizes.$TOGGLE_HEIGHT;
+  font-size: 100%;
+  background-color: colors.$BACKGROUND;
+  border-radius: sizes.$TOGGLE_HEIGHT;
+}
+
+.option {
+  z-index: levels.$TOGGLE;
+  width: 50%;
+  font-weight: 600;
+  color: colors.$FONT_LIGHT;
+  transition: 0.2s ease-in-out;
+
+  &.active {
+    color: colors.$FONT_DARK;
+  }
+}
+
+.indicator {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 50%;
+  height: calc(sizes.$TOGGLE_HEIGHT - 4px);
+  background-color: colors.$WHITE;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 12%), 0 1px 2px rgba(0, 0, 0, 24%);
+}

@@ -1,0 +1,63 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/constants/sizes';
+
+.inputGroup {
+  & + & {
+    margin-top: 1.8rem;
+  }
+
+  .inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+    padding: sizes.$INPUT_PADDING;
+    color: colors.$FONT_DARK;
+    border: 1px solid colors.$BORDER;
+    border-radius: 4px;
+    transition: 0.2s ease-in-out;
+
+    &:focus-within {
+      border-color: colors.$FONT_DARK;
+    }
+  }
+
+  .label,
+  .emailError {
+    display: block;
+    padding: 4px 6px;
+    font-size: sizes.$FONT_SMALL;
+    color: colors.$FONT_LIGHT;
+  }
+
+  .emailError {
+    position: absolute;
+    color: colors.$WARNING;
+  }
+
+  .input {
+    width: 90%;
+    color: colors.$FONT_DARK;
+
+    &::placeholder {
+      color: colors.$GRAY4;
+    }
+  }
+
+  .checkIcon {
+    color: colors.$BACKGROUND;
+    transition: 0.2s ease-in-out;
+
+    &.valid {
+      color: colors.$HIGHLIGHT;
+    }
+  }
+
+  .eyeIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: colors.$FONT_DARK;
+  }
+}

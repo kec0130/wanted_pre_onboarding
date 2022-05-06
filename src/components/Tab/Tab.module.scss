@@ -1,0 +1,28 @@
+@use '/src/styles/constants/colors';
+
+.tabWrapper {
+  position: relative;
+  width: 90%;
+  min-width: 340px;
+  border-bottom: 2px solid colors.$BORDER;
+
+  .tab {
+    padding: 1rem 0;
+    font-size: 100%;
+    font-weight: 600;
+    color: colors.$FONT_LIGHT;
+    transition: color 0.2s ease-in-out;
+
+    &.active {
+      color: colors.$HIGHLIGHT;
+    }
+  }
+
+  .indicator {
+    position: absolute;
+    left: 0;
+    height: 2px;
+    background: colors.$HIGHLIGHT;
+    transition: transform 0.2s ease-in-out;
+  }
+}
