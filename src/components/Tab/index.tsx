@@ -15,20 +15,17 @@ export default function Tab({ tabs }: TabProps) {
       <h3 className='title'>Tab</h3>
       <div className={styles.tabWrapper}>
         <div>
-          {tabs.map((tab, index) => {
-            const key = `tab-${index}-${tab}`
-            return (
-              <button
-                key={key}
-                type='button'
-                className={classNames(styles.tab, { [styles.active]: currentIndex === index })}
-                onClick={() => setCurrentIndex(index)}
-                style={{ width: `${tabWidth}%` }}
-              >
-                {tab}
-              </button>
-            )
-          })}
+          {tabs.map((tab, index) => (
+            <button
+              key={`tab-${tab}`}
+              type='button'
+              className={classNames(styles.tab, { [styles.active]: currentIndex === index })}
+              onClick={() => setCurrentIndex(index)}
+              style={{ width: `${tabWidth}%` }}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
         <span
           className={styles.indicator}

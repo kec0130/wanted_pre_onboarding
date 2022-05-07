@@ -14,20 +14,17 @@ export default function Toggle({ options }: ToggleProps) {
     <article className='container'>
       <h3 className='title'>Toggle</h3>
       <div className={styles.toggleWrapper}>
-        {options.map((option, index) => {
-          const key = `toggle-${index}-${option}`
-          return (
-            <button
-              key={key}
-              type='button'
-              className={classNames(styles.option, { [styles.active]: currentIndex === index })}
-              onClick={() => setCurrentIndex(index)}
-              style={{ width: `${optionWidth}%` }}
-            >
-              {option}
-            </button>
-          )
-        })}
+        {options.map((option, index) => (
+          <button
+            key={`toggle-${option}`}
+            type='button'
+            className={classNames(styles.option, { [styles.active]: currentIndex === index })}
+            onClick={() => setCurrentIndex(index)}
+            style={{ width: `${optionWidth}%` }}
+          >
+            {option}
+          </button>
+        ))}
         <span
           className={styles.indicator}
           style={{
