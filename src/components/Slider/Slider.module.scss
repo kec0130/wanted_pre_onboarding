@@ -6,14 +6,26 @@
   width: 320px;
 
   .valueWrapper {
-    display: block;
-    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    margin-bottom: 16px;
     color: colors.$FONT_DARK;
-    text-align: center;
+    background-color: colors.$GRAY0;
+    border: 1px solid colors.$BORDER;
+    border-radius: 4px;
 
     .value {
       margin-right: 4px;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .unit {
+      margin-left: 8px;
+      font-size: sizes.$FONT_SMALL;
+      color: colors.$FONT_LIGHT;
     }
   }
 
@@ -47,7 +59,10 @@
       height: sizes.$SLIDER_THUMB;
       cursor: pointer;
       background-color: colors.$HIGHLIGHT;
+      border: 3px solid colors.$WHITE;
       border-radius: 50%;
+      appearance: none;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 12%), 0 1px 2px rgba(0, 0, 0, 24%);
     }
 
     .input::-ms-thumb {
@@ -55,7 +70,10 @@
       height: sizes.$SLIDER_THUMB;
       cursor: pointer;
       background-color: colors.$HIGHLIGHT;
+      border: 3px solid colors.$WHITE;
       border-radius: 50%;
+      appearance: none;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 12%), 0 1px 2px rgba(0, 0, 0, 24%);
     }
   }
 }

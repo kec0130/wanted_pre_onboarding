@@ -12,7 +12,7 @@ export default function App() {
       <main className={styles.mainContainer}>
         <Toggle options={['Overview', 'Details']} />
         <Tab tabs={['Windows', 'Mac', 'Linux']} />
-        <Slider min={1} max={100} labelStep={25} />
+        <Slider min={1} max={100} step={1} unit='%' labels={[1, 25, 50, 75, 100]} />
         <Input />
         <Dropdown category='Country' list={listOfCountries} />
       </main>

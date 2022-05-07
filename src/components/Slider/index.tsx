@@ -1,33 +1,21 @@
 import { useState } from 'react'
-import Label from './Label'
+import SliderLabel from '../SliderLabel'
 import styles from './Slider.module.scss'
 
 interface SliderProps {
-  labelStep: number
+  min: number
+  max: number
+  step: number
+  unit: string
+  labels: Array<number>
 }
 
-export default function Slider({ labelStep }: SliderProps) {
-  const [inputValue, setInputValue] = useState(0)
-
-  const handleProgress = (value: number) => {
-    const slider = document.querySelector<HTMLInputElement>('.slider__input')
-    if (!slider) return
-
-    slider.style.background = `
-      linear-gradient(
-        to right,
-        var(--highlight-color) 0%,
-        var(--highlight-color) ${value}%,
-        var(--bg-gray-main) ${value}%,
-        var(--bg-gray-main) 100%
-      )
-    `
-  }
+export default function Slider({ min, max, step, unit, labels }: SliderProps) {
+  const [sliderValue, setSliderValue] = useState(min)
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target
-    setInputValue(Number(value))
-    handleProgress(Number(value))
+    const { value } = event.currentTarget
+    setSliderValue(Number(value))
   }
 
   return (
@@ -35,26 +23,31 @@ export default function Slider({ labelStep }: SliderProps) {
       <h3 className='title'>Slider</h3>
       <div className={styles.sliderWrapper}>
         <div className={styles.valueWrapper}>
-          <span className={styles.value}>{inputValue}</span>
-          <span>%</span>
+          <span className={styles.value}>{sliderValue}</span>
+          <span className={styles.unit}>{unit}</span>
         </div>
         <div>
           <div className={styles.inputWrapper}>
             <input
               type='range'
-              min='0'
-              max='100'
+              min={min}
+              max={max}
+              step={step}
               className={styles.input}
-              value={inputValue}
+              value={sliderValue}
               onChange={handleInputChange}
+              style={{
+                background: `linear-gradient(
+                  to right,
+                  #1098ad 0%,
+                  #1098ad ${sliderValue}%,
+                  #dee2e6 ${sliderValue}%,
+                  #dee2e6 100%
+                  )`,
+              }}
             />
           </div>
-          <Label
-            labelStep={labelStep}
-            inputValue={inputValue}
-            setInputValue={setInputValue}
-            handleProgress={handleProgress}
-          />
+          <SliderLabel unit={unit} labels={labels} sliderValue={sliderValue} setSliderValue={setSliderValue} />
         </div>
       </div>
     </article>
