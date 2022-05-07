@@ -1,51 +1,40 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import classNames from 'classnames'
 import styles from './Toggle.module.scss'
 
 interface ToggleProps {
-  defaultOption: string
-  anotherOption: string
+  options: Array<string>
 }
 
-export default function Toggle({ defaultOption, anotherOption }: ToggleProps) {
-  const [defaultActivation, setDefaultActivation] = useState(true)
-
-  const moveHighlight = () => {
-    const highlight = document.querySelector('.toggle__highlight')
-    const parent = highlight?.parentElement
-
-    if (!highlight || !parent) return
-
-    highlight.animate(
-      [
-        {
-          transform: `translateX(${defaultActivation ? parent.offsetWidth / 2 - 4 : 0}px)`,
-        },
-      ],
-      {
-        duration: 200,
-        easing: 'ease-in-out',
-        fill: 'forwards',
-      }
-    )
-  }
+export default function Toggle({ options }: ToggleProps) {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const optionWidth = useMemo(() => 100 / options.length, [options])
 
   return (
     <article className='container'>
       <h3 className='title'>Toggle</h3>
       <div className={styles.toggleWrapper}>
-        <button
-          type='button'
-          className={styles.slider}
-          onClick={() => {
-            setDefaultActivation((current) => !current)
-            moveHighlight()
+        {options.map((option, index) => {
+          const key = `toggle-${index}-${option}`
+          return (
+            <button
+              key={key}
+              type='button'
+              className={classNames(styles.option, { [styles.active]: currentIndex === index })}
+              onClick={() => setCurrentIndex(index)}
+              style={{ width: `${optionWidth}%` }}
+            >
+              {option}
+            </button>
+          )
+        })}
+        <span
+          className={styles.indicator}
+          style={{
+            width: `${optionWidth}%`,
+            transform: `translateX(${currentIndex * 100}%)`,
           }}
-        >
-          <div className={classNames(styles.option, { [styles.active]: defaultActivation })}>{defaultOption}</div>
-          <div className={classNames(styles.option, { [styles.active]: !defaultActivation })}>{anotherOption}</div>
-          <span className={styles.indicator} />
-        </button>
+        />
       </div>
     </article>
   )

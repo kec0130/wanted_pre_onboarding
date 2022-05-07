@@ -10,9 +10,9 @@ export default function App() {
   return (
     <div className={styles.background}>
       <main className={styles.mainContainer}>
-        <Toggle defaultOption='Overview' anotherOption='Details' />
+        <Toggle options={['Overview', 'Details']} />
         <Tab tabs={['Windows', 'Mac', 'Linux']} />
-        <Slider labelStep={25} />
+        <Slider min={1} max={100} labelStep={25} />
         <Input />
         <Dropdown category='Country' list={listOfCountries} />
       </main>
