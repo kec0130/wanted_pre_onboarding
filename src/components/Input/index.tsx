@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react'
 import { ImEye, ImEyeBlocked } from 'react-icons/im'
 import { BsFillCheckCircleFill } from 'react-icons/bs'
@@ -8,21 +7,30 @@ import styles from './Input.module.scss'
 export default function Input() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
-  const [emailValid, setEmailValid] = useState(false)
-  const [showEmailError, setShowEmailError] = useState(false)
+  const [isPasswordShown, setIsPasswordShown] = useState(false)
+  const [isEmailValid, setIsEmailValid] = useState(false)
+  const [isEmailErrorShown, setIsEmailErrorShown] = useState(false)
 
   const validateEmail = (emailString: string) => {
-    const emailFormat = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/
-    setEmailValid(emailFormat.test(emailString))
+    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/
+    setIsEmailValid(emailRegex.test(emailString))
   }
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target
+    const { value } = event.currentTarget
     setEmail(value)
     validateEmail(value)
-    setShowEmailError(!value && false)
+    setIsEmailErrorShown(!value && false)
   }
+
+  const handleEmailInputBlur = () => email && setIsEmailErrorShown(!isEmailValid)
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.currentTarget
+    setPassword(value)
+  }
+
+  const handlePasswordToggle = () => setIsPasswordShown((prev) => !prev)
 
   return (
     <article className='container'>
@@ -41,15 +49,15 @@ export default function Input() {
               name='email'
               value={email}
               onChange={handleEmailChange}
-              onBlur={() => email && setShowEmailError(!emailValid)}
+              onBlur={handleEmailInputBlur}
               autoComplete='off'
             />
             <BsFillCheckCircleFill
-              className={classNames(styles.checkIcon, { [styles.valid]: emailValid })}
+              className={classNames(styles.checkIcon, { [styles.valid]: isEmailValid })}
               aria-label='email validation'
             />
           </div>
-          {showEmailError && <span className={styles.emailError}>Invalid e-mail address.</span>}
+          {isEmailErrorShown && <span className={styles.emailError}>Invalid e-mail address.</span>}
         </div>
         <div className={styles.inputGroup}>
           <label className={styles.label} htmlFor='password'>
@@ -59,19 +67,19 @@ export default function Input() {
             <input
               className={styles.input}
               placeholder='Password'
-              type={showPassword ? 'text' : 'password'}
+              type={isPasswordShown ? 'text' : 'password'}
               id='password'
               name='password'
               value={password}
-              onChange={(event) => setPassword(event.target.value)}
+              onChange={handlePasswordChange}
             />
             <button
               type='button'
               className={styles.eyeIcon}
-              onClick={() => setShowPassword((current) => !current)}
+              onClick={handlePasswordToggle}
               aria-label='toggle password'
             >
-              {showPassword ? <ImEye /> : <ImEyeBlocked />}
+              {isPasswordShown ? <ImEye /> : <ImEyeBlocked />}
             </button>
           </div>
         </div>
