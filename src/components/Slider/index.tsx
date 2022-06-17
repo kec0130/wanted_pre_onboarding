@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import SliderLabel from '../SliderLabel'
+import SliderLabel from './Label'
 import styles from './Slider.module.scss'
 
 interface SliderProps {

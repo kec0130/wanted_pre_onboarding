@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import styles from './SliderLabel.module.scss'
+import styles from './Label.module.scss'
 
 interface SliderLabelProps {
   unit: string
