@@ -3,7 +3,7 @@ import Tab from '../components/Tab'
 import Slider from '../components/Slider'
 import Input from '../components/Input'
 import Dropdown from '../components/Dropdown'
-import listOfCountries from '../data/countries'
+import countries from '../data/countries.json'
 import styles from './Routes.module.scss'
 
 export default function App() {
@@ -14,7 +14,7 @@ export default function App() {
         <Tab tabs={['Windows', 'Mac', 'Linux']} />
         <Slider min={1} max={100} step={1} unit='%' labels={[1, 25, 50, 75, 100]} />
         <Input />
-        <Dropdown category='Country' list={listOfCountries} />
+        <Dropdown category='Country' data={countries} />
       </main>
     </div>
   )

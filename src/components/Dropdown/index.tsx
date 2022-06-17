@@ -6,21 +6,21 @@ import styles from './Dropdown.module.scss'
 
 interface DropdownProps {
   category: string
-  list: Array<string>
+  data: Country[]
 }
 
-export default function Dropdown({ category, list }: DropdownProps) {
+export default function Dropdown({ category, data }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedValue, setSelectedValue] = useState(`Select ${category}`)
   const [searchValue, setSearchValue] = useState('')
-  const [filteredList, setFilteredList] = useState(list)
+  const [filteredData, setFilteredData] = useState(data)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   const toggleDropdown = () => {
     if (isOpen) {
       setIsOpen(false)
       setSearchValue('')
-      setFilteredList(list)
+      setFilteredData(data)
     } else {
       setIsOpen(true)
     }
@@ -35,7 +35,7 @@ export default function Dropdown({ category, list }: DropdownProps) {
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget
     setSearchValue(value)
-    setFilteredList(list.filter((x) => x.toLowerCase().includes(value.toLowerCase())))
+    setFilteredData(data.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())))
   }
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -78,17 +78,14 @@ export default function Dropdown({ category, list }: DropdownProps) {
               />
             </div>
             <ul className={styles.dropdownList}>
-              {filteredList.length ? (
-                filteredList.map((item) => (
-                  <li key={`dropdown-list-${item}`}>
-                    <button type='button' value={item} onClick={handleItemClick}>
-                      {item}
-                    </button>
-                  </li>
-                ))
-              ) : (
-                <span className={styles.noResult}>No result</span>
-              )}
+              {filteredData.map((item) => (
+                <li key={`dropdown-list-${item.code}`}>
+                  <button type='button' value={item.name} onClick={handleItemClick}>
+                    {item.name}
+                  </button>
+                </li>
+              ))}
+              {!filteredData.length && <span className={styles.noResult}>No result</span>}
             </ul>
           </div>
         )}
